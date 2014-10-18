@@ -1513,7 +1513,7 @@ event Destroyed()
 defaultproperties
 {
     Title="Julia/Admin";
-    Version="1.0.0";
+    Version="1.1.0";
     LocaleClass=class'Locale';
 
     AutoBalanceAdminPresent=true;
