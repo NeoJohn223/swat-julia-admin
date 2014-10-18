@@ -241,6 +241,12 @@ var config bool AutoBalance;
 var config int AutoBalanceTime;
 
 /**
+ * Do not commence autobalance if admins are present on a server
+ * @type bool
+ */
+var config bool AutoBalanceAdminPresent;
+
+/**
  * An action (adminmod command) taken upon an unbalancer that has reached the action limit
  * @type string
  */
@@ -727,7 +733,11 @@ protected function CheckTeams()
         return;
     }
 
-    if (!self.AreTeamsBalanced(SufferingTeam))
+    // Skip teams check if there are admins on the server
+    if (
+        (self.AutoBalanceAdminPresent || class'Utils.LevelUtils'.static.GetAdmins(Level).Length == 0) && 
+        !self.AreTeamsBalanced(SufferingTeam)
+    )
     {
         self.AutoBalanceRequired = SufferingTeam;
     }
@@ -1506,6 +1516,7 @@ defaultproperties
     Version="1.0.0";
     LocaleClass=class'Locale';
 
+    AutoBalanceAdminPresent=true;
     AutoBalanceAction="none";
     AutoBalanceTime=20;
 
