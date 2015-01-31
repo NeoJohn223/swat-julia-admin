@@ -1,3 +1,8 @@
+1.1.1 (2015-01-31)
+
+* Fixed AutoBalanceAdminPresent.
+
+
 1.1.0 (2014-10-18)
 
 * Introduced an ability to disable autobalancing when there are admins present on a server.
