@@ -735,7 +735,7 @@ protected function CheckTeams()
 
     // Skip teams check if there are admins on the server
     if (
-        (self.AutoBalanceAdminPresent || class'Utils.LevelUtils'.static.GetAdmins(Level).Length == 0) && 
+        (self.AutoBalanceAdminPresent || !class'Julia.Utils'.static.AnyAdminsOnServer(Level)) &&
         !self.AreTeamsBalanced(SufferingTeam)
     )
     {
